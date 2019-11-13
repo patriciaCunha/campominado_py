@@ -2,6 +2,7 @@ import socket
 from datetime import datetime
 from ast import literal_eval
 from campo_minado_negocio import CampoMinado
+from jsonrpclib.SimpleJSONRPCServer import SimpleJSONRPCServer
 from consts_mensagem import QUANTIDADE_COLUNAS, QUANTIDADE_LINHAS, CODIGO_RESPOSTA, RESPOSTA_FALHA, RESPOSTA_SUCESSO ,JOGADA_LINHA , CODIGO_COMANDO, COMANDO_EFETUAR_JOGADA, COMANDO_SHOW, IMPRIMIR, QTD
 
 ENCODE = "UTF-8"
@@ -9,10 +10,11 @@ MAX_BYTES = 65535
 PORT = 5000
 HOST = '127.0.0.1'
 
-def servidor():
-    orig = (HOST, PORT)
-    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    sock.bind(orig)
+def server():
+    serverRPC = SimpleJSONRPCServer(('localhost', 7002))
+    serverRPC.register_function(printName)
+    print("Iniciando servidor")
+    serverRPC.serve_forever()
 
     jogo = CampoMinado()
 
@@ -26,6 +28,9 @@ def servidor():
 
         data = resposta.encode(ENCODE)
         sock.sendto(data, address)
+        
+def printName(nome, sobrenome):
+    return nome + " " + sobrenome
 
 def tratar_mensagem(jogo, contexto):
 
