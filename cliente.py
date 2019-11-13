@@ -1,6 +1,7 @@
 from ast import literal_eval
 from socket import socket, AF_INET, SOCK_DGRAM
 from datetime import datetime
+from jsonrpclib import Server
 from campo_minado_view import iniciar_novo_jogo, continuar_jogo, efetuar_nova_jogada,menu_inicial, sair
 from consts_mensagem import CODIGO_COMANDO, CODIGO_RESPOSTA, COMANDO_EFETUAR_JOGADA, JOGADA_LINHA, JOGADA_COLUNA ,COMANDO_SHOW, IMPRIMIR, QTD
 
@@ -62,7 +63,9 @@ def tratar_jogadas():
 """Fim tratar_jogadas"""
 
 
-def cliente():
+def client():
+    proxy = Server('http://localhost:7002')
+    print(proxy.printName("Patricia", "Cunha"))
 
     switcher = {
         1: iniciar_novo_jogo,
