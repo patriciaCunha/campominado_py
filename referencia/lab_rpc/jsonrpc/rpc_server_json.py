@@ -7,5 +7,5 @@ def printName(nome, sobrenome):
 def server():
     serverRPC = SimpleJSONRPCServer(('localhost', 7002))
     serverRPC.register_function(printName)
-    print("Starting server")
+    print("Iniciando server")
     serverRPC.serve_forever()
