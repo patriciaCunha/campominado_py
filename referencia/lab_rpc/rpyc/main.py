@@ -2,7 +2,7 @@ import sys
 from rpyc_server import server
 from rpyc_client import client
 
-print("Você quer executar:")
+print("Executar:")
 print("1 para servidor")
 print("2 para cliente")
 opcao = input("Opção:")

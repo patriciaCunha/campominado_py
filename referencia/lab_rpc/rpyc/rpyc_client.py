@@ -13,5 +13,5 @@ def client():
     linecount = proxy.root.line_counter(fileobj, resposta)
     print('O número de linhas no arquivo é:', linecount)
 
-    nome = proxy.root.print_name("André", "Bessa")
+    nome = proxy.root.print_name("Patricia", "Cunha")
     print(nome)
