@@ -2,7 +2,7 @@ import sys
 from rpc_server_json import server
 from rpc_client_json import client
 
-print("Você quer executar:")
+print("Executar:")
 print("1 para servidor")
 print("2 para cliente")
 opcao = input("Opção:")
